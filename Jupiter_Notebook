@@ -28,27 +28,71 @@
  "cells": [
   {
    "source": [
-    "# Loading Necessary Libraries and datasets"
+    "# Loading Necessary Libraries and dataset"
    ],
    "cell_type": "markdown",
    "metadata": {}
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [],
    "source": [
     "import pandas as pd\n",
-    "import numpy as np\n"
+    "import numpy as np\n",
+    "df = pd.read_csv(\"C:/Users/Hp/Desktop/ Machine Learning Engineering Project/data for upskilling hands on exercise - Sep2019.csv\")"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 15,
    "metadata": {},
-   "outputs": [],
-   "source": []
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "   applicant id date of disbursement  disbursed  eflscore  quintiles  \\\n",
+       "0       3624377             18-04-13          1       NaN        NaN   \n",
+       "1       3665599             26-04-13          1       NaN        NaN   \n",
+       "2       3672753             26-04-13          1       NaN        NaN   \n",
+       "3       3672795             02-05-13          1     430.0        4.0   \n",
+       "4       3673074             24-04-13          1       NaN        NaN   \n",
+       "\n",
+       "   bad30_m2  bad30_m3  bad30_m4  bad30_m5  bad30_m6  ...  bad90_m19  \\\n",
+       "0       0.0       0.0       0.0       0.0       0.0  ...        0.0   \n",
+       "1       0.0       0.0       0.0       0.0       0.0  ...        0.0   \n",
+       "2       0.0       0.0       0.0       0.0       0.0  ...        0.0   \n",
+       "3       1.0       1.0       1.0       1.0       1.0  ...        0.0   \n",
+       "4       0.0       0.0       0.0       0.0       0.0  ...        0.0   \n",
+       "\n",
+       "   bad90_m20  bad90_m21  bad90_m22  bad90_m23  bad90_m24  bad90_m25  \\\n",
+       "0        0.0        0.0        0.0        0.0        0.0        0.0   \n",
+       "1        0.0        0.0        0.0        0.0        0.0        0.0   \n",
+       "2        1.0        1.0        1.0        1.0        1.0        1.0   \n",
+       "3        0.0        0.0        0.0        0.0        0.0        0.0   \n",
+       "4        0.0        0.0        0.0        0.0        0.0        0.0   \n",
+       "\n",
+       "   bad90_m26  bad90_m27  bad90_m28  \n",
+       "0        0.0        0.0        0.0  \n",
+       "1        0.0        0.0        0.0  \n",
+       "2        1.0        1.0        1.0  \n",
+       "3        0.0        0.0        NaN  \n",
+       "4        0.0        0.0        0.0  \n",
+       "\n",
+       "[5 rows x 83 columns]"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>applicant id</th>\n      <th>date of disbursement</th>\n      <th>disbursed</th>\n      <th>eflscore</th>\n      <th>quintiles</th>\n      <th>bad30_m2</th>\n      <th>bad30_m3</th>\n      <th>bad30_m4</th>\n      <th>bad30_m5</th>\n      <th>bad30_m6</th>\n      <th>...</th>\n      <th>bad90_m19</th>\n      <th>bad90_m20</th>\n      <th>bad90_m21</th>\n      <th>bad90_m22</th>\n      <th>bad90_m23</th>\n      <th>bad90_m24</th>\n      <th>bad90_m25</th>\n      <th>bad90_m26</th>\n      <th>bad90_m27</th>\n      <th>bad90_m28</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>3624377</td>\n      <td>18-04-13</td>\n      <td>1</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>...</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>3665599</td>\n      <td>26-04-13</td>\n      <td>1</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>...</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>3672753</td>\n      <td>26-04-13</td>\n      <td>1</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>...</td>\n      <td>0.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>3672795</td>\n      <td>02-05-13</td>\n      <td>1</td>\n      <td>430.0</td>\n      <td>4.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>1.0</td>\n      <td>...</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>3673074</td>\n      <td>24-04-13</td>\n      <td>1</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>...</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n      <td>0.0</td>\n    </tr>\n  </tbody>\n</table>\n<p>5 rows × 83 columns</p>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 15
+    }
+   ],
+   "source": [
+    "#Just a quick view \n",
+    "df.head()"
+   ]
   },
   {
    "cell_type": "code",
